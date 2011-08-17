@@ -19,6 +19,12 @@ th {
 	text-align:center;
 }
 
+.labelText {
+	color:#ff0000;
+	text-align:center;
+	display:none;
+}
+
 #notif {
 	border:2px #ff0000 solid;
 	width:300px;
