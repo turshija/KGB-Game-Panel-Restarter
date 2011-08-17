@@ -33,24 +33,25 @@ $(document).ready(function(){
 </head>
 
 <body>
-	<? if (!empty($notifikacija)) { ?>
+	<?php if (!empty($notifikacija)) { ?>
 	<div id="notif">
 	<?=$notifikacija?>
 	</div>
-	<? } ?>
+	<?php } ?>
 
 	<table align="center">
 		<tr>
 			<th>Ime servera</th>
-			<th>Broj igraca</th>
 			<th>IP Adresa</th>
+			<th>Broj igraca</th>
 			<th>Status</th>
 		</tr>
-		<? foreach ($servers as $server) {
-			
-			echo "<tr><td>$server[name]</td><td>$server[players]</td><td>$server[ip]</td><td>$status</td></tr>\n";
+		<?php
+		foreach ($servers as $server) {
+			echo "<tr><td>$server[name]</td><td>$server[ip]</td><td>$server[players]</td><td>$status</td></tr>\n";
 
-		} ?>
+		}
+		?>
 	</table>
 </body>
 </html>
