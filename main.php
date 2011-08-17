@@ -1,4 +1,4 @@
 <?php
 include "config.php";
-include "includes/restarter.class.php";
+include "assets/classes/restarter.class.php";
 ?>
