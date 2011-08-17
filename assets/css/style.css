@@ -15,6 +15,10 @@ th {
 	color:white;
 }
 
+.center {
+	text-align:center;
+}
+
 #notif {
 	border:2px #ff0000 solid;
 	width:300px;
