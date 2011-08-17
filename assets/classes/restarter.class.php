@@ -49,6 +49,9 @@ class Restarter {
 		return $server;
 	}
 	
+	/*
+	 * Metoda vrati ceo sadrzaj datog linka
+	 */
 	function procitaj($link,$vrsta="panel") {
 		global $config;
 		if ($config['feedVrsta']==2) {
