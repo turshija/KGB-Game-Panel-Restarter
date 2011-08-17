@@ -33,6 +33,8 @@ $(document).ready(function(){
 </head>
 
 <body>
+	
+	
 	<?php if (!empty($notifikacija)) { ?>
 	<div id="notif">
 	<?=$notifikacija?>
@@ -46,20 +48,22 @@ $(document).ready(function(){
 			<th width="100">Broj igraca</th>
 			<th width="70">Status</th>
 		</tr>
-		<?php
+<?php
 		foreach ($servers as $server) {
 			echo <<<OUT
-			<tr>
+			<tr rel="{$server['ip']}" class="red" id="{$server['serverid']}">
 				<td>{$server['name']}</td>
 				<td>{$server['ip']}</td>
 				<td class="center"><img src="assets/images/players-loader.gif" /></td>
 				<td class="center"><img src="assets/images/status-loader.gif" /></td>
 			</tr>
+
 OUT;
 
 		}
 		?>
 	</table>
+	<p id="removedServersNotif" class="labelText">Uklonjeno <span></span> servera sa liste zato sto nisu dodati na GT.rs!</p>
 </body>
 </html>
 
@@ -70,7 +74,7 @@ OUT;
 <div id="load_popup" class="prozor" > 
 <center> 
 	Restartovanje u toku ...<br />
-	<img src="template/load.gif" />
+	<img src="assets/images/status-loader.gif" />
 	
 	
 </center> 
