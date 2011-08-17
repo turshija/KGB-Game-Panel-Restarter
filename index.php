@@ -43,12 +43,19 @@ $(document).ready(function(){
 		<tr>
 			<th>Ime servera</th>
 			<th>IP Adresa</th>
-			<th>Broj igraca</th>
-			<th>Status</th>
+			<th width="100">Broj igraca</th>
+			<th width="70">Status</th>
 		</tr>
 		<?php
 		foreach ($servers as $server) {
-			echo "<tr><td>$server[name]</td><td>$server[ip]</td><td>$server[players]</td><td>$status</td></tr>\n";
+			echo <<<OUT
+			<tr>
+				<td>{$server['name']}</td>
+				<td>{$server['ip']}</td>
+				<td class="center"><img src="assets/images/players-loader.gif" /></td>
+				<td class="center"><img src="assets/images/status-loader.gif" /></td>
+			</tr>
+OUT;
 
 		}
 		?>
