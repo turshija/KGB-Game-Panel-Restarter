@@ -1,12 +1,35 @@
 /*
 funkcija koja izbacuje loading prozor pri kliku na class="restartDugme"
 */
+var ip,id;
+
 $(document).ready(function(){
+	$(".red").each(function(i) {
+		refreshGT($(this).attr("rel"),$(this).attr("id"));
+	});
+	
+	
 	$(".restartDugme").click(function(event){
 		$("#mrak").fadeIn("slow");
 		$("#load_popup").center().show();
 	});
 });
+
+function refreshGT(ip,id) {
+	$.ajax({
+		type: "POST",
+		url: "process.php",
+		data: {
+			'task': 'gtstatus',
+			'ip': ip
+		},
+		dataType: "json",
+		success: function(data){
+			$("#"+id+" td:nth-child(3)").text(data.players);
+			$("#"+id+" td:nth-child(4)").text(data.status);
+		},
+	});
+}
 /*
 funkcija za centriranje div-a
 source: http://plugins.jquery.com/project/autocenter
