@@ -3,7 +3,7 @@
 // auth token generisete u vasem gpanelu pod stavkom "Profil"
 // ako ga regenerisete, moracete da izmenite ovaj config i unesete novi token !
 
-$token = array("vas-token-ide-ovde-lasdldsalkadsljkjlk8289090312");
+$token = array("82fe32a2a0113936343d5d5316626dcd22306dfd0019d4be8a66ae1574194002");
 
 // naziv sajta
 $title = "Server Restarter";
