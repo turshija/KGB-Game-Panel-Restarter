@@ -25,8 +25,7 @@ function refreshGT(ip,id) {
 		},
 		dataType: "json",
 		success: function(data){
-			$("#"+id+" td:nth-child(3)").text(data.players);
-			$("#"+id+" td:nth-child(4)").text(data.status);
+			$("#"+id+" td:nth-child(3)").text(data.players).next().text(data.status);
 		},
 	});
 }
