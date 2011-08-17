@@ -83,6 +83,13 @@ class Restarter {
 		}
 	}
 	
+
+	/*
+	 * Sigurnosna metoda, iz IP adrese izbaci sve sto nije broj, tacka ili dvotacka
+	 */
+	function ocistiIP($ip) {
+		return ereg_replace("[^0-9\.\:]", "", $ip );
+	}
 	
 	/*
 	 * Metoda ocisti output buffer, a zatim ispise gresku
