@@ -1,8 +1,9 @@
 <?php
 
-require_once "config.php";
+//require_once "config.php";
+require_once "main.php";
 
-$auth = $token;
+$auth = $config['token'];
 if (!$auth) {
 	die();
 }
@@ -12,7 +13,7 @@ $i=1;
 foreach ($auth as $broj=>$token) {	// broj -> redni broj tokena
 	 
 	$servers = "servers.php?auth=$token";
-	$ret = procitaj($servers);
+	$ret = $restarter->procitaj($servers);
 	$info = explode("\n",$ret);
 
 
@@ -31,7 +32,7 @@ foreach ($auth as $broj=>$token) {	// broj -> redni broj tokena
 		$server[$i]['auth'] = $broj;
 		
 		$gtlink = "ip=".$server[$i]['ip'];
-		$gtresp = unserialize(procitaj($gtlink,"gt"));
+		$gtresp = unserialize($restarter->procitaj($gtlink,"gt"));
 		if ($gtresp['b']['ip']=="") $server[$i]['status']="Nema servera na GT-u";
 		else {
 			if ($server[$i]['online']=="Started")

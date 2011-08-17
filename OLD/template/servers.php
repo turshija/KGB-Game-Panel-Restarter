@@ -1,6 +1,6 @@
 <html>
 <head>
-<title><?=$title?></title>
+<title><?=$config['title']?></title>
 <script src="template/js/jquery.min.js" type="text/javascript"></script> 
 <script src="template/js/main.js" type="text/javascript"></script> 
 <link href="template/style.css" rel="stylesheet" type="text/css" />
@@ -36,7 +36,7 @@ $(document).ready(function(){
 			<th>Status</th>
 		</tr>
 		<? foreach ($server as $info) {
-			if (in_array($info['ip'],$preskoci)) continue;
+			if (in_array($info['ip'],$config['preskoci'])) continue;
 			if ($info['status']=="offline") $status = "<a class=\"restartDugme\" href=\"server_process.php?task=restart&id=$info[serverid]&auth=$info[auth]\">Restartuj</a>";
 			else $status = $info['status'];
 
