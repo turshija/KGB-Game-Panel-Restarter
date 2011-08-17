@@ -1,0 +1,51 @@
+body { 
+	background-color:black;
+}
+a {
+	color: #00ff00;
+}
+
+table, td, th {
+	border:1px solid red;
+	color:white;
+	background-color:black;
+}
+th {
+	background-color:gray;
+	color:white;
+}
+
+#notif {
+	border:2px #ff0000 solid;
+	width:300px;
+	margin:10px;
+	margin-left:auto;
+	margin-right:auto;
+	padding:5px;
+	color:white;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-moz-box-shadow: 5px 5px 15px #333;
+	-webkit-box-shadow: 5px 5px 15px #333;
+}
+
+.prozor {
+	color: #ffffff;
+	width: 600px;
+	display: none;
+	border: 1px #ff0000 solid;
+	padding: 10px;
+	background-color: #650000;
+	margin: auto;
+	z-index: 10;
+	position: absolute;
+	opacity: 0.9;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-moz-box-shadow: 5px 5px 15px #333;
+	-webkit-box-shadow: 5px 5px 15px #333;
+	-webkit-transition-duration:.2s;
+	-webkit-transition-timing-function:ease-in;
+	-moz-transition-duration:.2s;
+	-moz-transition-timing-function:ease-in;
+}
