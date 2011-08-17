@@ -1,17 +1,22 @@
 /*
 funkcija koja izbacuje loading prozor pri kliku na class="restartDugme"
 */
-var ip,id;
+var ip,id,removed=0;
 
 $(document).ready(function(){
-	$(".red").each(function(i) {
-		refreshGT($(this).attr("rel"),$(this).attr("id"));
-	});
-	
-	
 	$(".restartDugme").click(function(event){
 		$("#mrak").fadeIn("slow");
 		$("#load_popup").center().show();
+	});
+});
+
+/*
+ * Ovo je sa namerom izbaceno van .ready-ja, da bi sacekali da se ucitaju
+ * sve slike (loading animacije) pre nego sto krene da se refreshuje GT.rs status
+ */
+$(window).load(function() {
+	$(".red").each(function(i) {
+		refreshGT($(this).attr("rel"),$(this).attr("id"));
 	});
 });
 
@@ -25,7 +30,11 @@ function refreshGT(ip,id) {
 		},
 		dataType: "json",
 		success: function(data){
-			$("#"+id+" td:nth-child(3)").text(data.players).next().text(data.status);
+			if (data.action=="hide") {
+				$("#"+id).fadeOut();
+				removed++;
+				$("#removedServersNotif").show().find("span").text(removed);
+			} else $("#"+id+" td:nth-child(3)").text(data.players).next().text(data.status);
 		},
 	});
 }
