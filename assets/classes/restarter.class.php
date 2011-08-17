@@ -83,9 +83,18 @@ class Restarter {
 		}
 	}
 	
-	function izbaciGresku($text) {
+	
+	/*
+	 * Metoda ocisti output buffer, a zatim ispise gresku
+	 */
+	function izbaciGresku($tekst) {
 		@ob_clean();
-		die("GRESKA!<br />".$text);
+		$out = 
+'<div style="margin:auto;padding:0px 30px 30px 30px;width:500px;border:2px solid blue;">
+<h3>Greska</h3>
+'.$tekst.'
+</div>';
+		die($out);
 	}
 }
 
