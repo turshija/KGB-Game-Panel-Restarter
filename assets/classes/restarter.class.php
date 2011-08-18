@@ -86,6 +86,21 @@ class Restarter {
 		}
 	}
 	
+	/*
+	 * metoda skenira server na GT.rs i vraca informacije
+	 */
+	function skenirajServer($ip) {
+		global $config;
+		$br_skeniranja = $config['broj_skeniranja'];
+		$link = "ip={$ip}";
+		while (($br_skeniranja--)>0) {
+			$server = unserialize($this->procitaj($link,"gt"));
+			if (!$server) break;
+			if ($server['b']['status']=="1") break;
+			sleep(1);
+		}
+		return $server;
+	}
 
 	/*
 	 * Sigurnosna metoda, iz IP adrese izbaci sve sto nije broj, tacka ili dvotacka
