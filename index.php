@@ -17,6 +17,7 @@ $servers = $restarter->getServers();
 			<th>IP Adresa</th>
 			<th width="100">Broj igraca</th>
 			<th width="90">Status</th>
+			<th class="debug">debug</th>
 		</tr>
 <?php
 		foreach ($servers as $server) {
@@ -26,6 +27,7 @@ $servers = $restarter->getServers();
 				<td>{$server['ip']}</td>
 				<td class="center"><img src="assets/images/players-loader.gif" /></td>
 				<td class="center"><img src="assets/images/status-loader.gif" /></td>
+				<td class="debug"></td>
 			</tr>
 
 OUT;
