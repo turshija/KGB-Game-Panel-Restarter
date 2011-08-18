@@ -19,3 +19,10 @@ bez ikakvog pristupa u game panelu!
 	Ovo u vecini slucajeva resi problem.
 	U slucaju da ne resi, onda je problem do limita vaseg webhostinga (na vecini free webhostinga se javlja taj problem), a
 	jedino resenje ovog problema jeste da promenite webhosting provajdera.
+
+3.) Prednosti u odnosu na prethodnu verziju
+	1) GT.rs status se ucitava asinhrono (AJAX-om), tako da je ucitavanje stranice mnogo brze od prethodne verzije,
+	gde se stranica prikazivala tek posto se pokupe podaci i sa gpanela i sa GT.rs-a
+	2) Restartovanje servera je asinhrono (AJAX-om), tako da se posle restarta ne refreshuje komplet stranica,
+	vec samo taj server, i odmah vidite po statusu da li je restart servera bio uspesan ili ne
+	3) Pregledniji, stabilniji i kvalitetniji kod
