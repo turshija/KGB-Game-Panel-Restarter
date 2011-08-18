@@ -17,8 +17,8 @@ bez ikakvog pristupa u game panelu!
 	1) Ne prikazuje se lista servera, niti dobijam opcije za restartovanje
 	Otvorite config.php, pronadjite $config['feedVrsta'] i promenite sa 1 na 2 da promenite nacin na koji skripta uzima podatke.
 	Ovo u vecini slucajeva resi problem.
-	U slucaju da ne resi, onda je problem do limita vaseg webhostinga (na vecini free webhostinga se javlja taj problem), a
-	jedino resenje ovog problema jeste da promenite webhosting provajdera.
+	U slucaju da ne resi, onda je problem do limita vaseg webhostinga (na vecini free webhostinga se javlja
+	taj problem), a	jedino resenje ovog problema jeste da promenite webhosting provajdera.
 
 3.) Prednosti u odnosu na prethodnu verziju
 	1) GT.rs status se ucitava asinhrono (AJAX-om), tako da je ucitavanje stranice mnogo brze od prethodne verzije,
