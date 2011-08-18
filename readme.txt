@@ -26,3 +26,4 @@ bez ikakvog pristupa u game panelu!
 	2) Restartovanje servera je asinhrono (AJAX-om), tako da se posle restarta ne refreshuje komplet stranica,
 	vec samo taj server, i odmah vidite po statusu da li je restart servera bio uspesan ili ne
 	3) Pregledniji, stabilniji i kvalitetniji kod
+	4) Serveri koji nisu dodati na GT.rs se automatski uklanjaju sa liste, zbog preglednosti
