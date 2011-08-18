@@ -3,14 +3,12 @@
  * Author: Boris Vujicic
  */
 var debug = 0;	// debug
-var removed=0;	// global
 var maxSimultaneous = 10;	// broj maksimalno dozvoljenih GT skeniranja u jednom trenutku
 var currentSimultaneous = 0;
-var retry=[],ajaxHandler=[];
+var removed=0,retry=[],ajaxHandler=[];	// globals
 
 $(document).ready(function(){
-	//$(".debug").hide();
-	if (!debug) $(".debug").hide();
+	if (!debug) $(".debug").hide();		// sakrije debug kolonu ako je !debug
 });
 
 /*
