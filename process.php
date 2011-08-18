@@ -16,6 +16,7 @@ if ($_POST['task']=="gtstatus") {
 		else $return['players'] = $server['s']['players']."/".$server['s']['playersmax'];
 		$return['action'] = "display";
 	}
+	
 	die(json_encode($return));
 	
 } else if ($_POST['task']=="restartServer") {
@@ -31,13 +32,11 @@ if ($_POST['task']=="gtstatus") {
 		if ($server['b']['status']) {
 			$return['msg'] = "Server online";
 		} else {
-			//$return['msg'] = "Restartujem!";
 			$return['msg'] = $restarter->restartujServer($serverid, $token);
 		}
 	}
-	
-	//$return['msg'] = "$serverid $token $ip";
-	
+
 	die(json_encode($return));
+	
 }
 ?>

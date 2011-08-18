@@ -92,14 +92,12 @@ class Restarter {
 	 */
 	function restartujServer($serverid,$token) {
 		global $config;
-		//return "Restartujem server $serverid sa tokenom $token";
 		$server_process = "server_process.php?task=restart&auth=$token&id=$serverid";
-
 		$ret = $this->procitaj($server_process);
-		$info = explode("\n",$ret);
+		//$info = explode("\n",$ret);
 		return true;
-	
 	}
+	
 	/*
 	 * metoda skenira server na GT.rs i vraca informacije
 	 */
