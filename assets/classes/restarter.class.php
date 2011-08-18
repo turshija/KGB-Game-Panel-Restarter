@@ -55,6 +55,7 @@ class Restarter {
 	function procitaj($link,$vrsta="panel") {
 		global $config;
 		if ($config['feedVrsta']==2) {
+			if (!function_exists('curl_init')) $this->izbaciGresku("Nemate cURL na web serveru!<br />U config.php promenite feedVrsta!");
 			$ch = curl_init();
 			$timeout = 15;
 		}
