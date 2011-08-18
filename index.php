@@ -46,7 +46,7 @@ $(document).ready(function(){
 			<th>Ime servera</th>
 			<th>IP Adresa</th>
 			<th width="100">Broj igraca</th>
-			<th width="70">Status</th>
+			<th width="90">Status</th>
 		</tr>
 <?php
 		foreach ($servers as $server) {
