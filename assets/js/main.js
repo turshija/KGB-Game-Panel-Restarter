@@ -16,11 +16,13 @@ $(document).ready(function(){
  */
 $(window).load(function() {
 	$(".red").each(function(i) {
-		refreshGT($(this).attr("rel"),$(this).attr("id"));
+		refreshGT($(this).attr("rel"),$(this).attr("id"),$(this).attr("src"));
 	});
 });
 
-function refreshGT(ip,id) {
+function refreshGT(ip,id,auth) {
+	
+	
 	$.ajax({
 		type: "POST",
 		url: "process.php",
@@ -34,9 +36,15 @@ function refreshGT(ip,id) {
 				$("#"+id).fadeOut();
 				removed++;
 				$("#removedServersNotif").show().find("span").text(removed);
-			} else $("#"+id+" td:nth-child(3)").text(data.players).next().text(data.status);
+			} else {
+				restart = "<span class=\"restartBtn\" onclick=\"restartujServer('"+id+"','"+auth+"')\">Restartuj</span>";
+				$("#"+id+" td:nth-child(3)").html(data.players).next().html((data.status=="1")?'Online':restart);
+			}
 		},
 	});
+}
+function restartujServer(id,auth) {
+	alert('Restartujem server id: '+id+', a auth: '+auth);
 }
 /*
 funkcija za centriranje div-a
