@@ -2,7 +2,7 @@
 // auth token
 // auth token generisete u vasem gpanelu pod stavkom "Profil"
 // ako ga regenerisete, moracete da izmenite ovaj config i unesete novi token !
-$config['tokens'] = array("82fe32a2a0113936343d5d5316626dcd22306dfd0019d4be8a66ae1574194002");
+$config['tokens'] = array("1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d");
 
 // Broj provera 
 // Ovaj broj oznacava koliko ce skripta puta da se konektuje na GT.rs i proveri da li je neki server offline ili ne
