@@ -25,6 +25,11 @@ th {
 	display:none;
 }
 
+.restartBtn {
+	cursor:pointer;
+	color:#FF0000;
+}
+
 #notif {
 	border:2px #ff0000 solid;
 	width:300px;
