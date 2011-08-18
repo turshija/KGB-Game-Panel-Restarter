@@ -37,14 +37,30 @@ function refreshGT(ip,id,auth) {
 				removed++;
 				$("#removedServersNotif").show().find("span").text(removed);
 			} else {
-				restart = "<span class=\"restartBtn\" onclick=\"restartujServer('"+id+"','"+auth+"')\">Restartuj</span>";
+				restart = "<span class=\"restartBtn\" onclick=\"restartujServer('"+id+"','"+auth+"','"+ip+"')\">Restartuj</span>";
 				$("#"+id+" td:nth-child(3)").html(data.players).next().html((data.status=="1")?'Online':restart);
 			}
 		},
 	});
 }
-function restartujServer(id,auth) {
-	alert('Restartujem server id: '+id+', a auth: '+auth);
+function restartujServer(id,auth,ip) {
+	//alert('Restartujem server id: '+id+', a auth: '+auth);
+	$("#"+id+" td:nth-child(4)").html("<img src=\"assets/images/status-loader.gif\" /> restarting");
+	$.ajax({
+		type: "POST",
+		url: "process.php",
+		data: {
+			'task': 'restartServer',
+			'serverid': id,
+			'auth':auth,
+			'ip':ip
+		},
+		dataType: "json",
+		success: function(data){
+			//alert(data.msg);
+			refreshGT(ip,id,auth);
+		},
+	});
 }
 /*
 funkcija za centriranje div-a
