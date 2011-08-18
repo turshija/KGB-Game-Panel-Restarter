@@ -51,7 +51,7 @@ $(document).ready(function(){
 <?php
 		foreach ($servers as $server) {
 			echo <<<OUT
-			<tr rel="{$server['ip']}" class="red" id="{$server['serverid']}">
+			<tr rel="{$server['ip']}" class="red" src="{$server['auth']}" id="{$server['serverid']}">
 				<td>{$server['name']}</td>
 				<td>{$server['ip']}</td>
 				<td class="center"><img src="assets/images/players-loader.gif" /></td>
@@ -61,9 +61,9 @@ $(document).ready(function(){
 OUT;
 
 		}
-		?>
+?>
 	</table>
-	<p id="removedServersNotif" class="labelText">Uklonjeno <span></span> servera sa liste zato sto nisu dodati na GT.rs!</p>
+	<p id="removedServersNotif" class="labelText">Uklonjeno <span></span> servera sa liste koji nisu dodati na GT.rs!</p>
 </body>
 </html>
 
