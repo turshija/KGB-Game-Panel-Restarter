@@ -9,6 +9,8 @@ table, td, th {
 	border:1px solid red;
 	color:white;
 	background-color:black;
+	height:35px;
+	vertical-align: middle;
 }
 th {
 	background-color:gray;
