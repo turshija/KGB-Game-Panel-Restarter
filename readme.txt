@@ -8,20 +8,23 @@ Pomocu ove skripte, bilo ko ce moci da restartuje vas server SAMO ukoliko je ser
 bez ikakvog pristupa u game panelu!
 
 
-1.) Instalacija
+Instalacija
+-----------
 	* Uploadujte komplet skriptu u neki folder na vasem webhostingu, na primer u folder "restarter"
 	* Ulogujte se na KGB Game Panel, otvorite tab Profil i tu generisite novi API Token
 	* Na vasem web nalogu gde ste uploadovali ovu skriptu, otvorite config.php i tu unesite token
 	* U browseru otvorite www.vas-sajt.com/restarter i imacete spisak svih vasih servera, zajedno sa opcijama za restartovanje ukoliko su serveri offline
 	
-2.) Problemi
+Problemi
+--------
 	* Ne prikazuje se lista servera, niti dobijam opcije za restartovanje
 	Otvorite config.php, pronadjite $config['feedVrsta'] i promenite sa 1 na 2 da promenite nacin na koji skripta uzima podatke.
 	Ovo u vecini slucajeva resi problem.
 	U slucaju da ne resi, onda je problem do limita vaseg webhostinga (na vecini free webhostinga se javlja
 	taj problem), a	jedino resenje ovog problema jeste da promenite webhosting provajdera.
 
-3.) Prednosti u odnosu na prethodnu verziju
+Prednosti u odnosu na prethodnu verziju
+---------------------------------------
 	* GT.rs status se ucitava asinhrono (AJAX-om), tako da je ucitavanje stranice mnogo brze od prethodne verzije,
 	gde se stranica prikazivala tek posto se pokupe podaci i sa gpanela i sa GT.rs-a
 	* Restartovanje servera je asinhrono (AJAX-om), tako da se posle restarta ne refreshuje komplet stranica,
