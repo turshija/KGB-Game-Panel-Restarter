@@ -60,9 +60,10 @@ class Restarter {
 			$timeout = 15;
 		}
 		if ($vrsta=="panel")
-			if ($config['feedVrsta']==1)
+			if ($config['feedVrsta']==1) {
+				ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)'); 	// laziranje user agenta
 				$podaci=file_get_contents($config['apilink'].$link); 
-			else if ($config['feedVrsta']==2)
+			} else if ($config['feedVrsta']==2)
 				curl_setopt ($ch, CURLOPT_URL, $config['apilink'].$link);
 			else $this->izbaciGresku("Nepoznata vrsta feed-a!");
 		else if ($vrsta=="gt")
@@ -74,6 +75,7 @@ class Restarter {
 		else $this->izbaciGresku("Pogresna vrsta!");
 		
 		if ($config['feedVrsta']==2) {
+			curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');	// laziranje user agenta
 			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
 			$podaci = curl_exec($ch);
