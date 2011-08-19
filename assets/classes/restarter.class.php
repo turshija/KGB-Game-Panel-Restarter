@@ -4,7 +4,7 @@ class Restarter {
 		
 	/*
 	 * Metoda poziva parsiranje, i vraca listu servera u nizu
-	 */
+	 */ 
 	function getServers() {
 		global $config;
 		$servers = array();
