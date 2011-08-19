@@ -1,11 +1,7 @@
 <?php
 
 class Restarter {
-	
-	function Restarter() {
-		global $config;
-	}
-	
+		
 	/*
 	 * Metoda poziva parsiranje, i vraca listu servera u nizu
 	 */
@@ -26,9 +22,10 @@ class Restarter {
 	 * Metoda cita Gpanel feed, parsira i vraca niz servera sa informacijama
 	 */
 	function parseServersFromFeed($feed,$tokenid) {
+		global $config;
 		$br_info = 7;
 		$i=0;
-		$dump = $this->procitaj($feed);
+		$dump = $this->procitaj($config['apilink'].$feed);
 		$info = explode("\n",$dump);
 		
 		if ($info[0]==0) $this->izbaciGresku($info[1]);
@@ -52,38 +49,38 @@ class Restarter {
 	/*
 	 * Metoda vrati ceo sadrzaj datog linka
 	 */
-	function procitaj($link,$vrsta="panel") {
+	function procitaj($link) {
 		global $config;
+		
 		if ($config['feedVrsta']==2) {
 			if (!function_exists('curl_init')) $this->izbaciGresku("Nemate cURL na web serveru!<br />U config.php promenite feedVrsta!");
 			$ch = curl_init();
 			$timeout = 15;
 		}
-		if ($vrsta=="panel")
-			if ($config['feedVrsta']==1) {
-				ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)'); 	// laziranje user agenta
-				$podaci=file_get_contents($config['apilink'].$link); 
-			} else if ($config['feedVrsta']==2)
-				curl_setopt ($ch, CURLOPT_URL, $config['apilink'].$link);
-			else $this->izbaciGresku("Nepoznata vrsta feed-a!");
-		else if ($vrsta=="gt")
-			if ($config['feedVrsta']==1)
-				$podaci=file_get_contents($config['gtapilink']."?".$link); 
-			else if ($config['feedVrsta']==2)
-				curl_setopt ($ch, CURLOPT_URL, $config['gtapilink']."?".$link);
-			else $this->izbaciGresku("Nepoznata vrsta feed-a!");
-		else $this->izbaciGresku("Pogresna vrsta!");
 		
-		if ($config['feedVrsta']==2) {
+		if ($config['feedVrsta']==1) {
+			ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)'); 	// laziranje user agenta
+			$podaci=file_get_contents($link); 
+			
+		} else if ($config['feedVrsta']==2) {
+			curl_setopt ($ch, CURLOPT_URL, $link);
 			curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');	// laziranje user agenta
 			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
 			$podaci = curl_exec($ch);
 			curl_close($ch);
-		}
+			
+		} else $this->izbaciGresku("Nepoznata vrsta feed-a!");
 		
-		if (is_bool($podaci) && $podaci == false) { 
-			$this->izbaciGresku("Doslo je do greske!");
+		
+		
+		if (is_bool($podaci) && $podaci == false) {
+			$error = "Doslo je do greske!<br />Nije primljen nikakav sadrzaj sa linka:<br /><strong>{$link}</strong>";
+			// prolazi kroz sve tokene i uklanja iz linka kako posetioci ne bi mogli da ga vide
+			foreach ($config['tokens'] as $id=>$token) {
+				$error = str_replace($token,"[token{$id} uklonjen]",$error);
+			}
+			$this->izbaciGresku($error);
 		} else {
 			return $podaci;
 		}
@@ -95,7 +92,7 @@ class Restarter {
 	function restartujServer($serverid,$token) {
 		global $config;
 		$server_process = "server_process.php?task=restart&auth=$token&id=$serverid";
-		$ret = $this->procitaj($server_process);
+		$ret = $this->procitaj($config['apilink'].$server_process);
 		//$info = explode("\n",$ret);
 		return true;
 	}
@@ -108,7 +105,7 @@ class Restarter {
 		$br_skeniranja = $config['broj_skeniranja'];
 		$link = "ip={$ip}";
 		while (($br_skeniranja--)>0) {
-			$server = unserialize($this->procitaj($link,"gt"));
+			$server = unserialize($this->procitaj($config['gtapilink']."?".$link));
 			if (!$server) break;
 			if ($server['b']['status']=="1") break;
 			sleep(1);
@@ -129,7 +126,7 @@ class Restarter {
 	function izbaciGresku($tekst) {
 		@ob_clean();
 		$out = 
-'<div style="margin:auto;padding:0px 30px 30px 30px;width:500px;border:2px solid blue;">
+'<div style="margin:auto;padding:0px 30px 30px 30px;width:800px;border:2px solid blue;">
 <h3>Greska</h3>
 '.$tekst.'
 </div>';
