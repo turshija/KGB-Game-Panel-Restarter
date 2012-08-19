@@ -1,4 +1,4 @@
-<?
+<?php
 // auth token
 // auth token generisete u vasem gpanelu pod stavkom "Profil"
 // ako ga regenerisete, moracete da izmenite ovaj config i unesete novi token !
