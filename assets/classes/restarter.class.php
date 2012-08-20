@@ -63,20 +63,15 @@ class Restarter {
 			$podaci=file_get_contents($link); 
 			
 		} else if ($config['feedVrsta']==2) {
-			// curl_setopt ($ch, CURLOPT_URL, $link);
-			// curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');	// laziranje user agenta
-			// curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-			// curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-			// $podaci = curl_exec($ch);
-			// curl_close($ch);
-
+			/**
+			 * @credits: http://proazis.com/
+			 */
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, $link);
 			curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11");
 			curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
 			curl_setopt($curl, CURLOPT_HEADER, true);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-			//curl_setopt($curl, CURLOPT_COOKIE, "OSAD=7c16772a592ec8202e995c6f89e25578");
 			$podaci = curl_exec($curl);
 			curl_close($curl);
 			$podaci = str_replace("\r\n", "\n", $podaci);
