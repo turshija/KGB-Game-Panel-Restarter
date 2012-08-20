@@ -12,9 +12,9 @@ $config['tokens'] = array("1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d");
 $config['broj_skeniranja'] = 3;
 
 // Vrsta Feed-a
-// 1 - file_get_contents
+// 1 - file_get_contents (trenutno ne radi zbog ogranicenja firewalla)
 // 2 - cURL
-$config['feedVrsta'] = 1;
+$config['feedVrsta'] = 2;
 
 // link ka Gpanel i GT API-ju (ne menjati ako ne znate za sta sluzi !)
 $config['apilink'] = "http://www.kgb-hosting.com/gpanel/api/"; 
