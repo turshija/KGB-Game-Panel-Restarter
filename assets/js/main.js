@@ -28,7 +28,7 @@ $(window).load(function() {
 function refreshGT(ip,id,auth,count) {
 	if (currentSimultaneous>=maxSimultaneous) {
 		count++;
-		$("#"+id+" td:nth-child(5)").html(count)
+		$("#"+id+" td:nth-child(5)").html(count);
 		setTimeout("refreshGT('"+ip+"','"+id+"','"+auth+"','"+count+"')",100);
 		return true;
 	} else {
@@ -58,7 +58,7 @@ function refreshGT(ip,id,auth,count) {
 				restart = "<span class=\"restartBtn\" onclick=\"restartujServer('"+id+"','"+auth+"','"+ip+"')\">Restartuj</span>";
 				$("#"+id+" td:nth-child(3)").html(data.players).next().html((data.status=="1")?'Online':restart);
 			}
-		},
+		}
 	});
 }
 /*
@@ -78,6 +78,6 @@ function restartujServer(id,auth,ip) {
 		dataType: "json",
 		success: function(data){
 			refreshGT(ip,id,auth,0);
-		},
+		}
 	});
 }
