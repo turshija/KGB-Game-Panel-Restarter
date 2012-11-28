@@ -4,7 +4,7 @@
 // ako ga regenerisete, moracete da izmenite ovaj config i unesete novi token !
 $config['tokens'] = array("1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d");
 
-// Broj provera 
+// Broj provera
 // Ovaj broj oznacava koliko ce skripta puta da se konektuje na GT.rs i proveri da li je neki server offline ili ne
 // Desava se nekad da je server na GT-u prikazan kao offline, tako da ovaj broj sprecava iskoriscavanje te greske
 // Sto je veci broj, to je proces restarta duzi za jednu sekundu
@@ -12,11 +12,11 @@ $config['tokens'] = array("1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d");
 $config['broj_skeniranja'] = 3;
 
 // Vrsta Feed-a
-// 1 - file_get_contents (trenutno ne radi zbog ogranicenja firewalla)
+// 1 - file_get_contents
 // 2 - cURL
 $config['feedVrsta'] = 2;
 
 // link ka Gpanel i GT API-ju (ne menjati ako ne znate za sta sluzi !)
-$config['apilink'] = "http://www.kgb-hosting.com/gpanel/api/"; 
-$config['gtapilink'] = "http://www.gametracker.rs/feed.php";
+$config['apilink'] = "http://www.kgb-hosting.com/gpanel/api/";
+$config['gtapilink'] = "http://api.gametracker.rs/api-restarter/json/server_info";
 ?>
