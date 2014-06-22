@@ -15,7 +15,7 @@ $config['broj_skeniranja'] = 3;
 // U ovaj niz stavljate ID od Servera koji mozete videti u game panelu.
 // Server koji se nalazi u ovoj listi nece biti prikazan u listi.
 // Primer: 	array('25140', '26254', '28141')
-$config['ignorisanje'] = array();
+$config['ignorisi'] = array();
 
 // Vrsta Feed-a
 // 1 - file_get_contents

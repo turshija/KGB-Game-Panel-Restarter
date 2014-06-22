@@ -34,7 +34,7 @@ class Restarter {
 
 		for ($j=1;$j<=$brojServera;$j++) {
 		
-			if(in_array($info[(($j-1)*$br_info)+2+0], $config['ignorisanje']))
+			if(in_array($info[(($j-1)*$br_info)+2+0], $config['ignorisi']))
 				continue;
 			
 			$server[$i]['serverid']		=	$info[(($j-1)*$br_info)+2+0];
