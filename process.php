@@ -26,7 +26,7 @@ if ($_POST['task']=="gtstatus") {
 	$token = $config['tokens'][$temp];
 	$server = $restarter->skenirajServer($ip);
 
-	if (!$server) {
+	if (!$server || in_array($serverid, $config['ignorisanje'])) {
 		$return['msg'] = "No server";
 	} else {
 		if ($server['status']) {

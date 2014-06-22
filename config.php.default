@@ -11,6 +11,12 @@ $config['tokens'] = array("1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d1a2s3d");
 // Preporuceno je da stavite broj izmedju 3 i 5
 $config['broj_skeniranja'] = 3;
 
+// Ignorisanje servera
+// U ovaj niz stavljate ID od Servera koji mozete videti u game panelu.
+// Server koji se nalazi u ovoj listi nece biti prikazan u listi.
+// Primer: 	array('25140', '26254', '28141')
+$config['ignorisanje'] = array();
+
 // Vrsta Feed-a
 // 1 - file_get_contents
 // 2 - cURL
