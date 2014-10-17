@@ -56,17 +56,15 @@ class Restarter {
 	function procitaj($link) {
 		global $config;
 
-		if ($config['feedVrsta']==2) {
-			if (!function_exists('curl_init')) $this->izbaciGresku("Nemate cURL na web serveru!<br />U config.php promenite feedVrsta!");
-			$ch = curl_init();
-			$timeout = 15;
-		}
-
 		if ($config['feedVrsta']==1) {
 			ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)'); 	// laziranje user agenta
 			$podaci=file_get_contents($link);
 
 		} else if ($config['feedVrsta']==2) {
+			
+			if(!function_exists('curl_init'))
+				$this->izbaciGresku("Nemate cURL na web serveru!<br />U config.php promenite feedVrsta!");
+		
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, $link);
 			curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11");
